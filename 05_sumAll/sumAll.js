@@ -15,17 +15,8 @@ const sumAll = function(numOne, numTwo) {
     } else {
         return 'ERROR';
     }
-    
 
     return sum;
-    /*
-    take in first number and second number
-    create variable for sum
-    in a loop, starting with first number
-        add each number between first number and second number to sum
-        after reaching second number exit loop
-    return sum
-    */
 };
 
 
