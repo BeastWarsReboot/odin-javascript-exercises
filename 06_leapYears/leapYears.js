@@ -1,20 +1,18 @@
 const leapYears = function(year) {
     /*
     take in year
-    if year is divisible by 4 continue
-        if year is divisible by 400 AND 100 continue
+    if year is divisible by 400 AND 100 continue
+        if year is divisible by 4
             is a leap year
     else not a leap year
 
-    */ 
-    if(year % 4 == 0){
-        return true;
+    */
+    if(year % 100 == 0 && year % 400 == 0) return true;
+    else if(year % 4 == 0){
+        if(year % 100 == 0) return false;
+        else return true;
     }
-    else if(year % 100 == 0 && year % 400 == 0){
-        return true;
-    } else {
-        return false;
-    }
+    else return false;
 };
 
 /*
