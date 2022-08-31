@@ -24,22 +24,12 @@ const power = function(a, b) {
 
 const factorial = function(a) {
   if(a === 0) return 1;
-  
+
   for(let  i = a - 1; i >= 1; i--){
     a *= i;
   }
   return a;
 };
-
-/*
-
-The goal for this exercise is to create a calculator that does the following:
-
-add, subtract, get the sum, multiply, get the power, and find the factorial
-
-*/
-
-
 
 // Do not edit below this line
 module.exports = {
