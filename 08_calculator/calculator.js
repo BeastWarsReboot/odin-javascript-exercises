@@ -22,8 +22,13 @@ const power = function(a, b) {
   return Math.pow(a, b);
 };
 
-const factorial = function() {
-	
+const factorial = function(a) {
+  if(a === 0) return 1;
+  
+  for(let  i = a - 1; i >= 1; i--){
+    a *= i;
+  }
+  return a;
 };
 
 /*
