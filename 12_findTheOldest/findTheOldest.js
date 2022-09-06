@@ -1,7 +1,12 @@
 const findTheOldest = function(people) {
     people.forEach((people) => {
-                        people.age = people.yearOfDeath - people.yearOfBirth;
-                        console.log(people.age);
+                        if(people.yearOfDeath !== undefined) people.age = people.yearOfDeath - people.yearOfBirth;
+                            //console.log(people.age);
+                        else {
+                            const currentYear = new Date();
+                            people.age = currentYear.getFullYear() - people.yearOfBirth;
+                            console.log(people.age);
+                        } 
                     });
     console.log(people.sort((a,b) => b.age - a.age ));    
     return people[0];
