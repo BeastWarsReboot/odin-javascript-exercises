@@ -1,37 +1,48 @@
 const caesar = function(str, shift) {
     /*
-    (maybe create an array of the alphabet to match up against the cipher strings?)
-    turn provided string into array
+    create array of alphabet
+    convert characters of str to unicode?
     for each element of array
         use the shift number to shift the letters of the string/array
         to get the deciphered values of the letters
-    turn array back into a string
-    return the deciphered string
+        add the values to result 
+    return the deciphered result string
     */
-    shift = 2;
-    const alphabet = 
-        ['a', 'b', 'c', 'd', 'e', 'f', 'g',
-         'h', 'i', 'j', 'k', 'l', 'm', 'n',
-         'o', 'p', 'q', 'r', 's', 't', 'u',
-         'v', 'w', 'x', 'y', 'z'];
-    const cipher = (shift, alphabet) => {};
-    const shiftedAlphabet = alphabet.map((letter, index) => {
-        const newIndex = (index + shift) % alphabet.length;
-        return alphabet[newIndex];
-    });
 
+    //will hold enciphered message
+    let result = "";
 
-    let str = 'Hello, world!';
-    str = str.toLowerCase().split("");
-    //console.log(str);
-    //let newStr = str.toLowerCase().replace(/[^a-z]/g, " ");
-    //const processed = [];
-    //const filteredValue = str.filter(letter => alphabet.includes(letter) );
-    //console.log(filteredValue);
+    //for loop starts by getting unicode values on each character in the string
+    //then adds the shift value to the character code
     for(let i = 0; i < str.length; i++){
-        alphabet.indexOf(str[i]);
-        //alphabet[7 + shift]
+        let charCode = str.charCodeAt(i);
+        let charShift = charCode + shift;
+
+        //This deals with wrapping
+        if(charShift > 90 && charShift < 97){
+            charShift -= 26;
+        }
+  
+        //this deals with punctuation
+        else if(/[!?. ,]/.test(str.charAt(i)) == true){
+            result += str.charAt(i);
+        } 
+        
+        //This addes the enciphered characters to the result
+        else if(charShift >= 97 && charShift <= 122){
+            result += String.fromCharCode(charShift);
+        } else if(charShift >= 65 && charShift <= 90){
+            result += String.fromCharCode(charShift);
+        }
+        //result += String.fromCharCode(charShift)
+        //console.log(charShift);
     }
+    console.log(result);
+    return result;
+//uppercase letters unicode: 65 - 90
+//lowercase letters unicode: 97 - 122
+
+
 };
 
 /*
