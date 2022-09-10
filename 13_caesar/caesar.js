@@ -10,6 +10,9 @@ const caesar = function(str, shift) {
     */
 
     //will hold enciphered message
+    let upperAlpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let lowerAlpha = upperAlpha.toLowerCase();
+    console.log(lowerAlpha);
     let result = "";
 
     //for loop starts by getting unicode values on each character in the string
@@ -17,11 +20,15 @@ const caesar = function(str, shift) {
     for(let i = 0; i < str.length; i++){
         let charCode = str.charCodeAt(i);
         let charShift = charCode + shift;
-
-        //This deals with wrapping
+        
+        
+        //Trying to get this to deal with wrapping
+        //let wrapChk = charCode % charShift;
+        //92 % 87 = 5
+        //Shifted Character = (OG character index + shift) % 26
         if(charShift > 90 && charShift < 97){
             charShift -= 26;
-        }
+        } else if()
   
         //this deals with punctuation
         if(/[!?. ,]/.test(str.charAt(i)) == true){
