@@ -24,7 +24,7 @@ const caesar = function(str, shift) {
         }
   
         //this deals with punctuation
-        else if(/[!?. ,]/.test(str.charAt(i)) == true){
+        if(/[!?. ,]/.test(str.charAt(i)) == true){
             result += str.charAt(i);
         } 
         
