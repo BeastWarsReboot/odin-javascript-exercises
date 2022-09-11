@@ -12,35 +12,52 @@ const caesar = function(str, shift) {
     //will hold enciphered message
     let upperAlpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let lowerAlpha = upperAlpha.toLowerCase();
-    console.log(lowerAlpha);
+   
     let result = "";
 
     //for loop starts by getting unicode values on each character in the string
     //then adds the shift value to the character code
     for(let i = 0; i < str.length; i++){
-        let charCode = str.charCodeAt(i);
-        let charShift = charCode + shift;
-        
+        //let charIndex = str.indexOf(i);
+        let charIndex = upperAlpha.indexOf(str.charAt(i).toUpperCase());
+        //console.log(str.charAt(i));
+        //console.log(charIndex);
+        let charShift = (charIndex + (shift)) % 26;
+        if(Math.sign(charShift) === -1){
+            charShift += 26;
+        }
+        //console.log(charShift);
         
         //Trying to get this to deal with wrapping
         //let wrapChk = charCode % charShift;
         //92 % 87 = 5
         //Shifted Character = (OG character index + shift) % 26
-        if(charShift > 90 && charShift < 97){
-            charShift -= 26;
-        } else if()
+        //!upperAlpha.includes(str.charAt(i)) && !lowerAlpha.includes(str.charAt(i))
+        if(charIndex == -1){
+            result += str.charAt(i);
+        }
   
         //this deals with punctuation
+        /*
         if(/[!?. ,]/.test(str.charAt(i)) == true){
             result += str.charAt(i);
-        } 
+        }
+        */
         
         //This addes the enciphered characters to the result
+        else if(upperAlpha.includes(str.charAt(i))){
+            result += upperAlpha.charAt(charShift);
+        }
+        else if (lowerAlpha.includes(str.charAt(i))){
+            result += lowerAlpha.charAt(charShift);
+        }
+        /*
         else if(charShift >= 97 && charShift <= 122){
             result += String.fromCharCode(charShift);
         } else if(charShift >= 65 && charShift <= 90){
             result += String.fromCharCode(charShift);
         }
+        */
         //result += String.fromCharCode(charShift)
         //console.log(charShift);
     }
