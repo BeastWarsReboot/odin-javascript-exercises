@@ -4,27 +4,24 @@ const caesar = function(str, shift) {
     //result for holding the enciphered message
     let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let result = "";
-
-    //for loop adds charIndex to shift modulo 26 to get the charShift value 
+ 
     //Shifted Character = (OG character index + shift) % 26
     for(let i = 0; i < str.length; i++){
         let charIndex = alphabet.indexOf(str.charAt(i).toUpperCase());
         let charShift = (charIndex + shift) % 26;
 
-        //if charShift is a negative value, add 26 to get the proper enciphered character
+        //deals with negative shift values
         if(Math.sign(charShift) === -1){
             charShift += 26;
         }
 
         
-        //This checks if the current character is a punctuation mark (which eval to -1)
-        //then adds them to the message unchanged
+        //This checks for punctuation marks
         if(charIndex == -1){
             result += str.charAt(i);
         }
         
-        //Otherwise this addes the enciphered characters to the result
-        //by checking if they are included in the alphabe with some casing work
+        //With some case checks, will add enciphered char to message
         else if(alphabet.includes(str.charAt(i))){
             result += alphabet.charAt(charShift);
         }
